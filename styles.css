@@ -61,3 +61,18 @@ box-shadow: 0 0 5px #EFEFEF;;
   opacity: 0;
   pointer-events: none;
 }
+
+/* media queries styles */
+@media only screen and (max-width: 600px) {
+  button {
+    height: 20rem;
+    width: 20rem;
+    margin: 1.4rem;
+  }
+
+  h1 {
+
+    font-size: 6rem;
+    margin-bottom: 10px;
+  }
+}
