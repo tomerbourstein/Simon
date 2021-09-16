@@ -9,6 +9,7 @@ h1 {
   color: #9D9D9D;
   font-family: 'Odibee Sans', cursive;
   font-size: 3rem;
+  margin-bottom: 5px;
 }
 
 footer {
@@ -22,8 +23,8 @@ footer {
 }
 
 button {
-  height: 5rem;
-  width: 5rem;
+  height: 10rem;
+  width: 10rem;
   margin: 0.7rem;
 }
 
@@ -34,6 +35,13 @@ p {
 span {
   color: #EFEFEF;
   text-decoration: underline;
+}
+
+.startKey {
+  margin-top: 3px;
+  margin-bottom: 20px;
+  width: 13rem;
+  height: 2rem;
 }
 
 .glow {
@@ -47,4 +55,9 @@ box-shadow: 0 0 5px #EFEFEF;;
 
 .gameOver {
   background-color: #FF2442;
+}
+
+.transparent {
+  opacity: 0;
+  pointer-events: none;
 }
