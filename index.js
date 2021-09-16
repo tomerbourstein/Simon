@@ -10,6 +10,7 @@ var buttonColors = ["red", "blue", "green", "yellow"];
 // the title that changes every level of the game. starting from level 0.
 var level = 1;
 
+var started = gamePattern.length;
 
 // a function that creates a random number between 0-3,
 // than changing the title to the next level number.
@@ -33,7 +34,6 @@ function nextSequence() {
 // the title changes to level 0 and the nextSequence() function is called.
 $(document).keydown(function(event) {
   var buttonPress = event.key;
-  var started = gamePattern.length;
   if (started === 0) {
     if (buttonPress === "a") {
       $("h1").text("Level " + 0);
@@ -44,13 +44,13 @@ $(document).keydown(function(event) {
 
 // event listener the wait for a click on the start button.
 // if the gamePattern[] is empty then it will start.
-$("#startButton").click(function(){
-  var started = gamePattern.length;
-  if (started === 0){
+$("#startButton").click(function() {
+  if (started === 0) {
     $("h1").text("Level " + 0);
     nextSequence();
   }
 });
+
 // adding a listener event "click" and assigning "this.id" to a var.
 // calling the Sound and Animation functions
 //calling the checkAnswer function to check if the last use click is equal to gamePattern.
@@ -84,13 +84,13 @@ function makeSound(color) {
 // the h1 changes to failure title.
 // the start button reappear.
 // caling the restartGame() function.
-function failActions(){
+function failActions() {
   var wrong = new Audio(`sounds/wrong.mp3`);
   wrong.play();
   $("body").addClass("gameOver");
   setTimeout(function() {
-      $("body").removeClass("gameOver");
-  },200);
+    $("body").removeClass("gameOver");
+  }, 200);
   $("h1").html("Game Over. Press <span>A</span> to Restart");
   $("#startButton").removeClass("transparent");
   restartGame();
@@ -99,8 +99,8 @@ function failActions(){
 // reseting the level back to level 1,
 // clearing the gamePattern[], that enables the pressing of "a" button.
 function restartGame() {
-    level = 1;
-    gamePattern.length = 0;
+  level = 1;
+  gamePattern = [];
 }
 
 // a functionthe gets the user's last click index from the array,
