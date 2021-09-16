@@ -12,13 +12,15 @@ var level = 1;
 
 
 // a function that creates a random number between 0-3,
+// than changing the title to the next level number.
+// adding a class that make the start button disappear.
 // than assign that number to a color from the colors array,
 // and than that chosen color is pushed to the gamePattern array.
 // at last its creating a Flash animation and calling the Sound function.
-// than changing the title to the next level number.
 // then clearing the array of user's click to start a new level.
 function nextSequence() {
   $("h1").text("Level " + level++);
+  $("#startButton").addClass("transparent");
   var randomNumber = Math.floor(Math.random() * 4);
   var randomChosenColor = buttonColors[randomNumber];
   gamePattern.push(randomChosenColor);
@@ -40,6 +42,15 @@ $(document).keydown(function(event) {
   }
 });
 
+// event listener the wait for a click on the start button.
+// if the gamePattern[] is empty then it will start.
+$("#startButton").click(function(){
+  var started = gamePattern.length;
+  if (started === 0){
+    $("h1").text("Level " + 0);
+    nextSequence();
+  }
+});
 // adding a listener event "click" and assigning "this.id" to a var.
 // calling the Sound and Animation functions
 //calling the checkAnswer function to check if the last use click is equal to gamePattern.
@@ -71,6 +82,7 @@ function makeSound(color) {
 // adding a class to the body to change background color to red.
 // after 200 ms timeout the class is removed and background returns to normal.
 // the h1 changes to failure title.
+// the start button reappear.
 // caling the restartGame() function.
 function failActions(){
   var wrong = new Audio(`sounds/wrong.mp3`);
@@ -80,6 +92,7 @@ function failActions(){
       $("body").removeClass("gameOver");
   },200);
   $("h1").html("Game Over. Press <span>A</span> to Restart");
+  $("#startButton").removeClass("transparent");
   restartGame();
 }
 
